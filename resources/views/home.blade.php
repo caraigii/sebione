@@ -9,16 +9,20 @@
                 <div class="col-sm-6">
                     <h1 class="m-0">{{ __('Companies') }}
                       
-                      <button type="button" class="btn btn-outline-primary btn-lg">
+
+                      {{-- add company --}}
+                      <button href="" type="button" class="btn btn-outline-primary btn-lg">
                         <i class="fa fa-plus" aria-hidden="true">
                         <i class="fa fa-building" aria-hidden="true">
                           </i></i></button>
 
-                      <button type="button" class="btn btn-outline-primary btn-lg">
+
+                      {{-- add employee --}}
+                      <a href="{{ route('backhome') }}" type="button" class="btn btn-outline-primary btn-lg">
                         <i class="fa fa-plus" aria-hidden="true">
                         <i class="fa fa-user" aria-hidden="true"></i>
                         </i>
-                      </button>
+                      </a>
                     </h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -30,6 +34,7 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
+              @if($companies)
                 @foreach($companies as $comp)
                 <div class="accordion w-100" id="companyAccordion">
                     
@@ -55,29 +60,30 @@
                                     <th>ID</th>
                                     <th>Firstname</th>
                                     <th>Lastname</th>
-                                    <th>Email</th>
-                                    <th>Phone Number</th>
-                                    <th>Company ID</th>
                                     <th>Action</th>
                                   </tr>
                                 </thead>
+
+
+                                @if($employees)
                                 @foreach($employees as $emp)
                                 <tbody>
                                   <tr>
                                     <td>{{$emp->id}}</td>
                                     <td>{{$emp->fname}}</td>
                                     <td>{{$emp->lname}}</td>
-                                    <td>{{$emp->email}}</td>
-                                    <td>{{$emp->phone}}</td>
-                                    <td>{{$emp->company}}</td>
                                     <td>
-                                      <button type="button" class="btn btn-primary btn-sm">View Profile</button>
-                                      <button type="button" class="btn btn-outline-warning btn-sm">Edit</button>
-                                      <button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
+                                      <a type="button" class="btn btn-primary btn-sm">View Profile</a>
+                                      <a type="button" class="btn btn-outline-warning btn-sm">Edit</a>
+                                      <a href="" type="button" class="btn btn-outline-danger btn-sm">Delete</a>
                                     </td>
                                   </tr>
                                 </tbody>
+                                
                                 @endforeach
+                                @endif
+
+
                               </table>
                           </ul>
                         </div>
@@ -85,7 +91,7 @@
                     </div>
                   </div>
                 @endforeach
-                  
+                @endif
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->

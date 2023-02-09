@@ -52,5 +52,19 @@ Route::middleware('auth')->group(function () {
 
     // Route::get('/company', [CompanyController::class, 'show']);
 
+    // Route::get('/employeescreate', function () {
+    //     return view('employeescreate');
+    // });
     // Route::get('/home', [CompanyController::class, 'show']);
+
+    // Route::resource("/home", EmployeeController::class);
+
+    Route::post('employeescreate', [EmployeeController::class, 'createEmployee'])->name('addemployee');
+    Route::get('/home/employeescreate', [EmployeeController::class, 'index'])->name('backhome');
+
+    Route::get('/home/{id}', [EmployeeController::class, 'deleteEmployee'])->name('deleteemployee');
+    // Route::get('home/employeescreate', function () {
+    //     return view('employeescreate');
+    // });
+    
 });

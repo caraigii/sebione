@@ -9,6 +9,8 @@ class employees extends Model
 {
     use HasFactory;
 
+    // protected $table = 'employees';
+    // protected $primarykey = 'id';
     public $fillable = [
         'fname',
         'lname',
@@ -16,4 +18,12 @@ class employees extends Model
         'phone',
         'company'
     ];
+
+    public function createEmployee($data){
+        return $this->create($data);
+    }
+
+    function getEmployees(){
+        return $this->all();
+    }
 }
