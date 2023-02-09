@@ -71,7 +71,6 @@ class EmployeeController extends Controller
     function __construct(){
         $this->emp = new employees;
     }
-
     function index(){
         return view('employeescreate');
         
@@ -93,9 +92,27 @@ class EmployeeController extends Controller
         // var_dump($data);
     }
 
-//     function deleteEmployee(){
-        
-//     }
+    function deleteEmployee($id){
+        $this->emp->deleteEmployee($id);
+        return back();
+    }
+
+    function updateEmployee($id){ 
+        $update = $this->emp->getEmployeeID($id);
+        return view('employeesedit', compact('update'));
+    }
+
+    function saveUpdatedEmployee(Request $request){
+        $data = [
+            'fname' => $request->updatefname,
+            'lname' => $request->updatelname,
+            'email' => $request->updateemail,
+            'phone' => $request->updatephone,
+            'company' => $request->updatecompanyid
+        ];
+        $this->emp->updateEmployee($data, $request->id);
+        return redirect()->route('home');
+    }
 }
 
 

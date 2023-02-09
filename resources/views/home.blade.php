@@ -74,8 +74,8 @@
                                     <td>{{$emp->lname}}</td>
                                     <td>
                                       <a type="button" class="btn btn-primary btn-sm">View Profile</a>
-                                      <a type="button" class="btn btn-outline-warning btn-sm">Edit</a>
-                                      <a href="" type="button" class="btn btn-outline-danger btn-sm">Delete</a>
+                                      <a href="{{ route('updateemployee', $emp->id) }}" type="button" class="btn btn-outline-warning btn-sm">Edit</a>
+                                      <a href="{{ route('deleteemployee', $emp->id) }}" type="button" class="btn btn-outline-danger btn-sm">Delete</a>
                                     </td>
                                   </tr>
                                 </tbody>

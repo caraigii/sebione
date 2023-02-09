@@ -26,4 +26,18 @@ class employees extends Model
     function getEmployees(){
         return $this->all();
     }
+
+    public function deleteEmployee($id){
+        $delete = $this->find($id);
+        $delete->delete();
+    }
+
+    public function getEmployeeID($id){
+        return $this->find($id);
+    }
+
+    public function updateEmployee($data, $id){
+        $update = $this->find($id);
+        $update->update($data);
+    }
 }

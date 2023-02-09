@@ -62,7 +62,11 @@ Route::middleware('auth')->group(function () {
     Route::post('employeescreate', [EmployeeController::class, 'createEmployee'])->name('addemployee');
     Route::get('/home/employeescreate', [EmployeeController::class, 'index'])->name('backhome');
 
-    Route::get('/home/{id}', [EmployeeController::class, 'deleteEmployee'])->name('deleteemployee');
+    Route::get('delete-employee/{id}', [EmployeeController::class, 'deleteEmployee'])->name('deleteemployee');
+
+    Route::get('employeesedit/{id}', [EmployeeController::class, 'updateEmployee'])->name('updateemployee');
+    Route::post('/save-updated-emp', [EmployeeController::class, 'saveUpdatedEmployee'])->name('saveupdate');
+
     // Route::get('home/employeescreate', function () {
     //     return view('employeescreate');
     // });
