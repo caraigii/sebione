@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\companies;
+use App\Models\employees;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,8 +23,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(employees $emp)
     {
-        return view('home');
+        return view('home', [
+            'companies' => companies::all(),
+
+            'employees' => $emp -> get()
+
+        ]);
+
+        
     }
 }

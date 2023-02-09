@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,25 +15,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('company', [
-        'heading' => 'Company List'
-    ]);
-});
+// Route::get('/', function () {
+//     return view('company', [
+//         'heading' => 'Company List',
+
+//         // 'companies' => 'Listing'
+//     ]);
+// });
+
+
 
 Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/home', function () {
-    return view('home');
-});
+// Route::get('/home', function () {
+//     return view('home');
+// });
 
 // Route::get('/site/{id}', function ($id) {
 //     return view('---');
 // });
 
 Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -42,4 +49,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+
+    // Route::get('/company', [CompanyController::class, 'show']);
+
+    // Route::get('/home', [CompanyController::class, 'show']);
 });
