@@ -33,16 +33,18 @@
                 @foreach($companies as $comp)
                 <div class="accordion w-100" id="companyAccordion">
                     
-                  <div class="card" data-toggle="collapse" data-target="#collapse{{$comp->name}}" aria-expanded="true" aria-controls="collapseOne">
-                      <div class="card-header" id="headingOne">
-                        <p class="mb-0">
-                            <img src="{{$comp->logo}}">
-                            <h1>{{$comp->name}}</h1>                         
+                  <div class="card">
+                      <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapse{{$comp->name}}" aria-expanded="true" aria-controls="collapseOne">
+                            <img src="{{$comp->logo}}" class="float-right">
+                            <h3>{{$comp->name}}</h3>                         
                           <p><strong>Email:</strong> {{$comp->email}}</p>
                           <p><strong>Website:</strong> {{$comp->website}}</p>
-                        </p>                     
                       </div>
-                  
+                      <div class="ml-2 mt-2">
+                        <p><strong>Actions: </strong>
+                          <button type="button" class="btn btn-outline-warning btn-sm">Edit</button>
+                          <button type="button" class="btn btn-outline-danger btn-sm">Delete</button></p>
+                        </div>
                       <div id="collapse{{$comp->name}}" class="collapse" aria-labelledby="headingOne" data-parent="#companyAccordion">
                         <div class="card-body">
                           <h3>Employees</h3>
