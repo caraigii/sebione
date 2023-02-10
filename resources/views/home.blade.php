@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
-@section('content')
+@section('styles')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+@endsection
 
+
+@section('content')
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -59,7 +63,7 @@
                         <div class="card-body">
                           <h3>Employees</h3>
                           <ul>                           
-                            <table class="table">
+                            <table class="table" id="employees-{{ $comp->id }}">
                                 <thead>
                                   <tr>
                                     <th>ID</th>
@@ -69,11 +73,11 @@
                                   </tr>
                                 </thead>
 
-
-                                @if($employees)
-                                @foreach($employees->paginate(2) as $emp)
-                                @if($comp->id === $emp->company)
                                 <tbody>
+                                @if($employees)
+                                @foreach($employees as $emp)
+                                @if($comp->id === $emp->company)
+                          
                                   <tr>
                                     <td>{{$emp->id}}</td>
                                     <td>{{$emp->fname}}</td>
@@ -84,11 +88,11 @@
                                       <a href="{{ route('deleteemployee', $emp->id) }}" type="button" class="btn btn-outline-danger btn-sm">Delete</a>
                                     </td>
                                   </tr>
-                                </tbody>
+                                
                                 @endif
                                 @endforeach
                                 @endif
-
+                              </tbody>
 
                               </table>
                           </ul>
@@ -96,6 +100,8 @@
                       </div>
                     </div>
                   </div>
+
+                  
                 @endforeach
                 @endif
             </div>
@@ -103,4 +109,23 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
+    <div class="d-flex justify-content-center align-items-center">
+      {{ $companies->links() }}
+  </div>
+@endsection
+
+@section('scripts')
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js" defer></script>
+    <script defer>
+        $(document).ready( function () {
+            @foreach($companies as $company)
+                $('#employees-{{ $company->id }}').DataTable({
+                    rowReorder: {
+                        selector: 'td:nth-child(2)'
+                    },
+                    responsive: true
+                });
+            @endforeach
+        } );
+    </script>
 @endsection

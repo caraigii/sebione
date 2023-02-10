@@ -99,6 +99,11 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('js/adminlte.min.js') }}" defer></script>
 
+<!-- Jquery datatable -->
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js" defer></script>
+
 @yield('scripts')
 
 @include('flash-message')
