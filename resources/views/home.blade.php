@@ -18,7 +18,8 @@
                       <a href="{{ route('tocreateComp') }}" type="button" class="btn btn-outline-primary btn-lg">
                         <i class="fa fa-plus" aria-hidden="true">
                         <i class="fa fa-building" aria-hidden="true">
-                          </i></i></a>
+                          </i></i>
+                        </a>
 
 
                       {{-- add employee --}}
@@ -44,7 +45,9 @@
                     
                   <div class="card">
                       <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapse{{$comp->name}}" aria-expanded="true" aria-controls="collapseOne">
-                            <img src="{{$comp->logo}}" class="float-right">
+                        
+                          <img src="{{$comp->logo ? asset('storage/'.$comp->logo) : asset('images/no-image.jpg')}}" class="float-right" style="width:100px; height:100px">
+
                             <h3>{{$comp->name}}</h3>                         
                           <p><strong>Email:</strong> {{$comp->email}}</p>
                           <p><strong>Website:</strong> {{$comp->website}}</p>
@@ -61,7 +64,7 @@
                         </div>
                       <div id="collapse{{$comp->name}}" class="collapse" aria-labelledby="headingOne" data-parent="#companyAccordion">
                         <div class="card-body">
-                          <h3>Employees</h3>
+                          <h3>Employees</h3><hr>
                           <ul>                           
                             <table class="table" id="employees-{{ $comp->id }}">
                                 <thead>
