@@ -25,14 +25,25 @@ class HomeController extends Controller
      */
     public function index(employees $emp)
     {
+        // $employees = $emp->employees()->paginate(10);
 
         return view('home', [
             'companies' => companies::all(),
-
             'employees' => $emp -> get(),
 
         ]);
     }
+
+    // public function index(companies $comp)
+    // {
+    //     // $employees = $emp->employees()->paginate(10);
+
+    //     return view('home', [
+    //         'employees' => employees::all(),
+    //         'companies' => $comp -> employee()->paginate(2),
+
+    //     ]);
+    // }
 
 
 }
