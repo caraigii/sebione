@@ -36,8 +36,18 @@ class DatabaseSeeder extends Seeder
             'website' => 'jolihatdog.com',
         ]);
 
+        $company1 = companies::factory()->create([
+            'name' => 'Mcdo',
+            'email' => 'mcdodo@email.com',
+            'website' => 'mcdowater.com',
+        ]);
+
         employees::factory(6)->create([
             'company' => $company->id
+        ]);
+
+        employees::factory(6)->create([
+            'company' => $company1->id
         ]);
     }
 }

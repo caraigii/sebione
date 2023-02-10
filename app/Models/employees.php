@@ -23,10 +23,6 @@ class employees extends Model
         return $this->create($data);
     }
 
-    function getEmployees(){
-        return $this->all();
-    }
-
     public function deleteEmployee($id){
         $delete = $this->find($id);
         $delete->delete();
@@ -36,8 +32,24 @@ class employees extends Model
         return $this->find($id);
     }
 
+    public function getCompanyID($company){
+        return $this->find($company);
+    }
+
     public function updateEmployee($data, $id){
         $update = $this->find($id);
         $update->update($data);
+    }
+
+    // function getSpecificEmployees($data, $id){
+    //     return $this->find($id);
+    // }
+
+    public function filterEmployee($id){
+        
+    }
+    //relationship-company
+    public function company(){
+        return $this->belongsTo(companies::class, 'id');
     }
 }

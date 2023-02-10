@@ -100,5 +100,8 @@
 <script src="{{ asset('js/adminlte.min.js') }}" defer></script>
 
 @yield('scripts')
+
+@include('flash-message')
+
 </body>
 </html>

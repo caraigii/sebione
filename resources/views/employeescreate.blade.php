@@ -18,7 +18,7 @@
         <label>Phone Number</label></br>
         <input type="text" placeholder="ex. 09123456789" name="phone" id="phone" class="form-control"></br>
         <label>Company ID</label></br>
-        <input type="number" placeholder="Enter Company ID" name="companyid" id="companyid" class="form-control"></br>
+        <input type="number" placeholder="Enter Company ID" value="#" name="companyid" id="companyid" class="form-control"></br>    
         <input type="submit" value="Create" class="btn btn-success"></br>
     </form>
    

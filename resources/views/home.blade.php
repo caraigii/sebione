@@ -11,14 +11,14 @@
                       
 
                       {{-- add company --}}
-                      <button href="" type="button" class="btn btn-outline-primary btn-lg">
+                      <a href="{{ route('tocreateComp') }}" type="button" class="btn btn-outline-primary btn-lg">
                         <i class="fa fa-plus" aria-hidden="true">
                         <i class="fa fa-building" aria-hidden="true">
-                          </i></i></button>
+                          </i></i></a>
 
 
                       {{-- add employee --}}
-                      <a href="{{ route('backhome') }}" type="button" class="btn btn-outline-primary btn-lg">
+                      <a href="{{ route('tocreateEmp') }}" type="button" class="btn btn-outline-primary btn-lg">
                         <i class="fa fa-plus" aria-hidden="true">
                         <i class="fa fa-user" aria-hidden="true"></i>
                         </i>
@@ -47,8 +47,13 @@
                       </div>
                       <div class="ml-2 mt-2">
                         <p><strong>Actions: </strong>
-                          <button type="button" class="btn btn-outline-warning btn-sm">Edit</button>
-                          <button type="button" class="btn btn-outline-danger btn-sm">Delete</button></p>
+                          <a href="{{route('updatecompany', $comp->id)}}" type="button" class="btn btn-outline-warning btn-sm">Edit</a>
+                          <a href="{{route('deletecompany', $comp->id)}}" type="button" class="btn btn-outline-danger btn-sm">Delete</a>
+                          {{-- add employee --}}
+                          <a href="" type="button" class="btn btn-outline-primary btn-sm">
+                            Add Employee           
+                          </a>
+                        </p>
                         </div>
                       <div id="collapse{{$comp->name}}" class="collapse" aria-labelledby="headingOne" data-parent="#companyAccordion">
                         <div class="card-body">
@@ -67,19 +72,20 @@
 
                                 @if($employees)
                                 @foreach($employees as $emp)
+                                @if($comp->id === $emp->company)
                                 <tbody>
                                   <tr>
                                     <td>{{$emp->id}}</td>
                                     <td>{{$emp->fname}}</td>
                                     <td>{{$emp->lname}}</td>
                                     <td>
-                                      <a type="button" class="btn btn-primary btn-sm">View Profile</a>
+                                      <a href="{{ route('showemployee', $emp->id) }}" type="button" class="btn btn-primary btn-sm">View Profile</a>
                                       <a href="{{ route('updateemployee', $emp->id) }}" type="button" class="btn btn-outline-warning btn-sm">Edit</a>
                                       <a href="{{ route('deleteemployee', $emp->id) }}" type="button" class="btn btn-outline-danger btn-sm">Delete</a>
                                     </td>
                                   </tr>
                                 </tbody>
-                                
+                                @endif
                                 @endforeach
                                 @endif
 

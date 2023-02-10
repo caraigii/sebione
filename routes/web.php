@@ -50,25 +50,25 @@ Route::middleware('auth')->group(function () {
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
-    // Route::get('/company', [CompanyController::class, 'show']);
 
-    // Route::get('/employeescreate', function () {
-    //     return view('employeescreate');
-    // });
-    // Route::get('/home', [CompanyController::class, 'show']);
-
-    // Route::resource("/home", EmployeeController::class);
-
+//EMPLOYEE ROUTES
     Route::post('employeescreate', [EmployeeController::class, 'createEmployee'])->name('addemployee');
-    Route::get('/home/employeescreate', [EmployeeController::class, 'index'])->name('backhome');
+    Route::get('/home/employeescreate', [EmployeeController::class, 'index'])->name('tocreateEmp');
 
     Route::get('delete-employee/{id}', [EmployeeController::class, 'deleteEmployee'])->name('deleteemployee');
 
     Route::get('employeesedit/{id}', [EmployeeController::class, 'updateEmployee'])->name('updateemployee');
     Route::post('/save-updated-emp', [EmployeeController::class, 'saveUpdatedEmployee'])->name('saveupdate');
 
-    // Route::get('home/employeescreate', function () {
-    //     return view('employeescreate');
-    // });
+    Route::get('employeesshow/{id}', [EmployeeController::class, 'showEmployee'])->name('showemployee');
+
+//COMPANY ROUTES
     
+    Route::get('/home/companycreate', [CompanyController::class, 'index'])->name('tocreateComp');
+    Route::post('companycreate', [CompanyController::class, 'createCompany'])->name('addcompany');
+    
+    Route::get('delete-company/{id}', [CompanyController::class, 'deleteCompany'])->name('deletecompany');
+
+    Route::get('companyedit/{id}', [CompanyController::class, 'updateCompany'])->name('updatecompany');
+    Route::post('/save-updated-comp', [CompanyController::class, 'saveUpdatedCompany'])->name('saveupdatec');
 });

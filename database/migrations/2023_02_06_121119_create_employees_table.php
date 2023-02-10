@@ -15,12 +15,11 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('fkemployee')->constrained()->onDelete('cascade');
             $table->string('fname');
             $table->string('lname');
             $table->string('email');
             $table->string('phone');
-            $table->foreignId('company') -> constrained();
+            $table->foreignId('company') -> constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\companies;
 use App\Models\employees;
 use Illuminate\Http\Request;
 
@@ -88,8 +87,6 @@ class EmployeeController extends Controller
 
         $this->emp->createEmployee($data);
         return back();
-
-        // var_dump($data);
     }
 
     function deleteEmployee($id){
@@ -112,6 +109,11 @@ class EmployeeController extends Controller
         ];
         $this->emp->updateEmployee($data, $request->id);
         return redirect()->route('home');
+    }
+
+    function showEmployee($id){
+        $show = $this->emp->getEmployeeID($id);
+        return view('employeesshow', compact('show'));
     }
 }
 

@@ -25,13 +25,14 @@ class HomeController extends Controller
      */
     public function index(employees $emp)
     {
+
         return view('home', [
             'companies' => companies::all(),
 
-            'employees' => $emp -> get()
+            'employees' => $emp -> get(),
 
         ]);
-
-        
     }
+
+
 }
