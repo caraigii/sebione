@@ -71,7 +71,7 @@
 
 
                                 @if($employees)
-                                @foreach($employees as $emp)
+                                @foreach($employees->paginate(2) as $emp)
                                 @if($comp->id === $emp->company)
                                 <tbody>
                                   <tr>

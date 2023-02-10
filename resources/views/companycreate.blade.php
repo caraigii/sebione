@@ -3,7 +3,7 @@
  
 <div class="card">
   <div class="card-header">
-    <h1>Create Employee Page</h1>
+    <h1>Create Company Page</h1>
   </div>
   <div class="card-body">
       
