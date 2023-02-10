@@ -42,11 +42,11 @@ class DatabaseSeeder extends Seeder
             'website' => 'mcdowater.com',
         ]);
 
-        employees::factory(6)->create([
+        employees::factory(25)->create([
             'company' => $company->id
         ]);
 
-        employees::factory(6)->create([
+        employees::factory(25)->create([
             'company' => $company1->id
         ]);
     }
