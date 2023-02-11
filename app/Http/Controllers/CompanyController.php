@@ -52,9 +52,10 @@ class CompanyController extends Controller
             
         ];
 
-        if($request->hasFile('logo')){
-            $data['logo'] = $request->file('logo')->store('logos', 'public');
+        if($request->hasFile('updatelogo')){
+            $data['logo'] = $request->file('updatelogo')->store('logos', 'public');
         }
+        
         $this->comp->updateCompany($data, $request->id);
         return redirect()->route('home');
     }

@@ -9,7 +9,7 @@
       
       <form action="{{ route('addcompany') }}" method="post" enctype="multipart/form-data">
         {!! csrf_field() !!}
-        <label>Name <span style="color:red">*</span></label><br>
+        <label>Company Name </label><br>
         <input type="text" placeholder="Enter Company Name" name="name" id="name" class="form-control" required><br>
         <label>Email</label><br>
         <input type="text" placeholder="Entercompanyemail@email.com" name="email" id="email" class="form-control"><br>

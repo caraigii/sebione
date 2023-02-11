@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class employees extends Model
 {
     use HasFactory;
-
-    // protected $table = 'employees';
-    // protected $primarykey = 'id';
     public $fillable = [
         'fname',
         'lname',
@@ -39,14 +36,6 @@ class employees extends Model
     public function updateEmployee($data, $id){
         $update = $this->find($id);
         $update->update($data);
-    }
-
-    // function getSpecificEmployees($data, $id){
-    //     return $this->find($id);
-    // }
-
-    public function filterEmployee($id){
-        
     }
     //relationship-company
     public function company(){
