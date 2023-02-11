@@ -2,6 +2,9 @@
 
 @section('styles')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
 @endsection
 
 
@@ -51,13 +54,14 @@
                             <h3>{{$comp->name}}</h3>                         
                           <p><strong>Email:</strong> {{$comp->email}}</p>
                           <p><strong>Website:</strong> {{$comp->website}}</p>
+                          <p><strong>CompanyID:</strong> {{$comp->id}}</p>
                       </div>
                       <div class="ml-2 mt-2">
                         <p><strong>Actions: </strong>
                           <a href="{{route('updatecompany', $comp->id)}}" type="button" class="btn btn-outline-warning btn-sm">Edit</a>
-                          <a href="{{route('deletecompany', $comp->id)}}" type="button" class="btn btn-outline-danger btn-sm">Delete</a>
+                          <a href="{{route('deletecompany', $comp->id)}}" type="button" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure you want to delete this company?')">Delete</a>
                           {{-- add employee --}}
-                          <a href="" type="button" class="btn btn-outline-primary btn-sm">
+                          <a href="/home/employeescreate1/{{$comp->id}}" type="button" class="btn btn-outline-primary btn-sm">
                             Add Employee           
                           </a>
                         </p>
@@ -88,7 +92,7 @@
                                     <td>
                                       <a href="{{ route('showemployee', $emp->id) }}" type="button" class="btn btn-primary btn-sm">View Profile</a>
                                       <a href="{{ route('updateemployee', $emp->id) }}" type="button" class="btn btn-outline-warning btn-sm">Edit</a>
-                                      <a href="{{ route('deleteemployee', $emp->id) }}" type="button" class="btn btn-outline-danger btn-sm">Delete</a>
+                                      <a href="{{ route('deleteemployee', $emp->id) }}" type="button" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure you want to delete this employee?')">Delete</a>
                                     </td>
                                   </tr>
                                 
@@ -117,6 +121,8 @@
   </div>
 @endsection
 
+
+
 @section('scripts')
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js" defer></script>
     <script defer>
@@ -131,4 +137,27 @@
             @endforeach
         } );
     </script>
+
+
+@if (Session::has('success'))
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        toastr.success("{{Session()->get('success')}}")
+    </script>
+@endif
+
+
 @endsection
+

@@ -53,7 +53,9 @@ Route::middleware('auth')->group(function () {
 
 //EMPLOYEE ROUTES
     Route::post('employeescreate', [EmployeeController::class, 'createEmployee'])->name('addemployee');
+    Route::post('employeescreate1', [EmployeeController::class, 'createEmployee1'])->name('addemployee1');
     Route::get('/home/employeescreate', [EmployeeController::class, 'index'])->name('tocreateEmp');
+    Route::get('/home/employeescreate1/{id}', [EmployeeController::class, 'index1'])->name('tocreateEmp1');
 
     Route::get('delete-employee/{id}', [EmployeeController::class, 'deleteEmployee'])->name('deleteemployee');
 
@@ -62,6 +64,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('employeesshow/{id}', [EmployeeController::class, 'showEmployee'])->name('showemployee');
 
+    
 //COMPANY ROUTES
     
     Route::get('/home/companycreate', [CompanyController::class, 'index'])->name('tocreateComp');

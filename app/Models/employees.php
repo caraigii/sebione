@@ -29,8 +29,8 @@ class employees extends Model
         return $this->find($id);
     }
 
-    public function getCompanyID($company){
-        return $this->find($company);
+    public function getCompanyID(companies $comp){
+        return $this->find($comp->id);
     }
 
     public function updateEmployee($data, $id){

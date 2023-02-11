@@ -31,12 +31,12 @@ class CompanyController extends Controller
         }
 
         companies::create($formFields);
-        return back();
+        return redirect('/home')->with('success', 'Company created successfully!');
     }
 
     function deleteCompany($id){
         $this->comp->deleteCompany($id);
-        return back();
+        return back()->with('success', 'Company deleted!');
     }
 
     function updateCompany($id){ 
@@ -57,7 +57,7 @@ class CompanyController extends Controller
         }
         
         $this->comp->updateCompany($data, $request->id);
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'Company updated!');
     }
 
     

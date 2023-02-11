@@ -106,7 +106,6 @@
 
 @yield('scripts')
 
-@include('flash-message')
 
 </body>
 </html>

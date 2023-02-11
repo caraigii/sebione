@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\companies;
 use App\Models\employees;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,16 @@ class EmployeeController extends Controller
         return view('employeescreate');
         
     }
+
+    function index1($id){
+        $comp = companies::find($id);
+ 
+         return view('employeescreate1', [
+ 
+             'company' => $comp
+         ]);
+         
+     }
     function createEmployee(Request $request){
 
         
@@ -27,12 +38,27 @@ class EmployeeController extends Controller
         ];
 
         $this->emp->createEmployee($data);
-        return back();
+        return redirect()->route('home')->with('success', 'Employee created successfully!');
+    }
+
+    function createEmployee1(Request $request, companies $comp){
+
+        
+        $data = [
+            'fname' => $request->fname,
+            'lname' => $request->lname,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'company' => $comp->id
+        ];
+
+        $this->emp->createEmployee1($data);
+        return redirect()->route('home')->with('success', 'Employee created successfully!');
     }
 
     function deleteEmployee($id){
         $this->emp->deleteEmployee($id);
-        return back();
+        return back()->with('success', 'Employee deleted!');
     }
 
     function updateEmployee($id){ 
@@ -49,7 +75,7 @@ class EmployeeController extends Controller
             'company' => $request->updatecompanyid
         ];
         $this->emp->updateEmployee($data, $request->id);
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'Employee updated!');
     }
 
     function showEmployee($id){

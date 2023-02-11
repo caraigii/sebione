@@ -17,8 +17,8 @@
         <input type="text" placeholder="Enteryouremail@email.com" name="email" id="email" class="form-control"><br>
         <label>Phone Number</label>
         <input type="text" placeholder="ex. 09123456789" name="phone" id="phone" class="form-control"><br>
-        <label>Company ID</label>
-        <input type="number" placeholder="Enter Company ID" value="#" name="companyid" id="companyid" class="form-control"><br><br>    
+        <label>Company ID: </label>
+        <input type="number" placeholder="Enter Company ID" value="{{$company->id}}" name="companyid" id="companyid" class="form-control" readonly><br><br>   
         <input type="submit" value="Create" class="btn btn-success">
     </form>
    
