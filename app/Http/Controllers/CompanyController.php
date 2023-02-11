@@ -26,19 +26,11 @@ class CompanyController extends Controller
             
         ]);
         
-        // $data = [
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'website' => $request->website,
-            
-        // ];
-
         if($request->hasFile('logo')){
             $formFields['logo'] = $request->file('logo')->store('logos', 'public');
         }
 
         companies::create($formFields);
-        // $this->comp->createCompany($data);
         return back();
     }
 
@@ -57,28 +49,15 @@ class CompanyController extends Controller
             'name' => $request->updatename,
             'email' => $request->updateemail,
             'website' => $request->updatewebsite,
-            'logo' => $request->file('updatelogo')->store('logos', 'public')
+            
         ];
+
+        if($request->hasFile('logo')){
+            $data['logo'] = $request->file('logo')->store('logos', 'public');
+        }
         $this->comp->updateCompany($data, $request->id);
         return redirect()->route('home');
     }
 
-    //  public function store(Request $request){
-    //         $request->validate([
-    //             'file' => 'required|mimes:png,jpg,jpeg|max:2048'
-    //         ]);
     
-    //         try{
-    //             $name = now()->timestamp.".{$request->file->getClientOriginalName()}";
-    //             $path = $req->file('file')->storeAs('files', $name, 'public');
-    
-    //             File::create([
-    //                 'file'=> "/storage/{$path}"
-    //             ]);
-    
-    //             return redirect()->back()->with('success','File Upload Successfully!!');
-    //         }catch(\Exception $e){
-    //             return redirect()->back()->with('error','Something goes wrong while uploading file!');
-    //         }
-    //     }
 }

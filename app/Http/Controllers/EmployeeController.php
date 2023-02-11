@@ -71,6 +71,7 @@ class EmployeeController extends Controller
         $this->emp = new employees;
     }
     function index(){
+        
         return view('employeescreate');
         
     }
@@ -115,6 +116,8 @@ class EmployeeController extends Controller
         $show = $this->emp->getEmployeeID($id);
         return view('employeesshow', compact('show'));
     }
+
+
 }
 
 
