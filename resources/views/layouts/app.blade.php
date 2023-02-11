@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sebi One Exam</title>
+    <link rel="icon" href="{{ asset('images/sebilogo.png') }}" type="image/icon type" >
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"

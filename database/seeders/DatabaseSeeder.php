@@ -32,14 +32,14 @@ class DatabaseSeeder extends Seeder
 
         $company = companies::factory()->create([
             'name' => 'Jollibee',
-            'email' => 'jabibabi@email.com',
-            'website' => 'jolihatdog.com',
+            'email' => 'jollibee@email.com',
+            'website' => 'jollibee.com',
         ]);
 
         $company1 = companies::factory()->create([
             'name' => 'Mcdo',
-            'email' => 'mcdodo@email.com',
-            'website' => 'mcdowater.com',
+            'email' => 'mcdo@email.com',
+            'website' => 'mcdolands.com',
         ]);
 
         employees::factory(25)->create([
@@ -49,5 +49,7 @@ class DatabaseSeeder extends Seeder
         employees::factory(25)->create([
             'company' => $company1->id
         ]);
+
+        
     }
 }

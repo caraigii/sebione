@@ -47,7 +47,7 @@
                 <div class="accordion w-100" id="companyAccordion">
                     
                   <div class="card">
-                      <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapse{{$comp->name}}" aria-expanded="true" aria-controls="collapseOne">
+                      <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapse{{$comp->id}}" aria-expanded="true" aria-controls="collapseOne">
                         
                           <img src="{{$comp->logo ? asset('storage/'.$comp->logo) : asset('images/no-image.jpg')}}" class="float-right" style="width:100px; height:100px">
 
@@ -66,7 +66,7 @@
                           </a>
                         </p>
                         </div>
-                      <div id="collapse{{$comp->name}}" class="collapse" aria-labelledby="headingOne" data-parent="#companyAccordion">
+                      <div id="collapse{{$comp->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#companyAccordion">
                         <div class="card-body">
                           <h3>Employees</h3><hr>
                           <ul>                           
